@@ -1,8 +1,15 @@
 {% extends "base.html" %}
   {% block content %}
   {% for obj in obj_list %}
-      <p><a href="{{ obj.url }}">{{ obj.title }}</a></p>
-      <p>{{ obj.description }}</p>
-      <p>{{ obj.timestamp }}</p>
+    <div class="card my-3">
+      <div class="card-header">
+        <h3><a href="{{ obj.url }}">{{ obj.title }}</a></h3>
+      </div>
+      <div class="card-body">
+        <p class="card-text">{{ obj.description }}</p>
+        <p class="card-text">{{ obj.timestamp }}</p>
+      </div>
+    </div>
+
    {% endfor %}
   {% endblock %}
