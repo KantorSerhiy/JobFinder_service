@@ -37,3 +37,15 @@ class Language(models.Model):
 
         return super(Language, self).save(*args, **kwargs)
 
+
+class Vacancy(models.Model):
+    url = models.URLField(unique=True)
+    title = models.CharField(max_length=50)
+    company = models.CharField(max_length=50)
+    description = models.TextField()
+    city = models.ForeignKey(to=City, on_delete=models.CASCADE)
+    language = models.ForeignKey(to=Language, on_delete=models.CASCADE)
+    timestamp = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title
