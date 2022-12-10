@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.text import slugify
 
 
 class City(models.Model):
@@ -12,6 +13,12 @@ class City(models.Model):
     def __str__(self):
         return self.name
 
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+
+        return super(City, self).save(*args, **kwargs)
+
 
 class Language(models.Model):
     name = models.CharField(max_length=50, unique=True)
@@ -23,4 +30,10 @@ class Language(models.Model):
 
     def __str__(self):
         return self.name
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+
+        return super(Language, self).save(*args, **kwargs)
 
