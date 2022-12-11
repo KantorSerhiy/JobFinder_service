@@ -22,7 +22,7 @@ class City(models.Model):
 
 class Language(models.Model):
     name = models.CharField(max_length=50, unique=True)
-    slug = models.SlugField(max_length=50, unique=True)
+    slug = models.SlugField(max_length=50, unique=True, blank=True)
 
     class Meta:
         verbose_name = "Language"
