@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+  {% block content %}
+    <form method="get" action="">
+        <div class="form-group">
+          {{ form.as_p }}
+        </div>
+      <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+
+
+  {% for obj in obj_list %}
+    <div class="card my-3">
+      <div class="card-header">
+        <h3><a href="{{ obj.url }}">{{ obj.title }}</a></h3>
+      </div>
+      <div class="card-body">
+        <p class="card-text">{{ obj.description }}</p>
+        <p>{{ obj.city.name}}| {{ obj.language.name}} <small>{{ obj.timestamp }}</small></p>
+      </div>
+    </div>
+  {% empty %}
+    <h3>Sorry, no vacantions =(((((</h3>
+
+   {% endfor %}
+
+
+  {% endblock %}
